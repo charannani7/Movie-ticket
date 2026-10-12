@@ -1,0 +1,2345 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CineBook | Telugu Movie Tickets</title>
+
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#08080d;
+    color:white;
+    overflow-x:hidden;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+@keyframes glow{
+
+    0%,100%{
+        box-shadow:0 0 10px rgba(255,45,85,.2);
+    }
+
+    50%{
+        box-shadow:0 0 30px rgba(255,45,85,.6);
+    }
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 6%;
+
+    background:rgba(0,0,0,.85);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#ff3154;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:25px;
+
+}
+
+nav ul li a{
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+    color:#ff3154;
+
+}
+
+
+.btn{
+
+    background:#ff3154;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#e32346;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(255,49,84,.3);
+
+}
+
+.nav-buttons .btn{
+
+    margin-left:5px;
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:120px 7% 70px;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.5),
+        rgba(0,0,0,.75)
+    ),
+
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=2000&q=80");
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+.hero-content{
+
+    max-width:700px;
+
+    animation:fadeUp 1.2s ease;
+
+}
+
+.hero h1{
+
+    font-size:68px;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+
+}
+
+.hero h1 span{
+
+    color:#ff3154;
+
+}
+
+.hero p{
+
+    font-size:19px;
+
+    line-height:1.7;
+
+    color:#ddd;
+
+    margin-bottom:30px;
+
+}
+
+.hero .btn{
+
+    animation:float 3s infinite;
+
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+
+    padding:90px 7%;
+
+}
+
+.title{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+.title h2{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+.title span{
+
+    color:#ff3154;
+
+}
+
+.title p{
+
+    color:#999;
+
+}
+
+
+/* =========================
+   MOVIES
+========================= */
+
+.movies{
+
+    background:#101016;
+
+}
+
+.movie-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+
+    gap:28px;
+
+}
+
+.movie-card{
+
+    background:#191921;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    transition:.4s;
+
+    animation:fadeUp .8s ease;
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+.movie-card:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.02);
+
+    border-color:#ff3154;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.5);
+
+}
+
+.movie-card img{
+
+    width:100%;
+
+    height:340px;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.movie-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.poster{
+
+    overflow:hidden;
+
+}
+
+.movie-info{
+
+    padding:20px;
+
+}
+
+.movie-info h3{
+
+    font-size:21px;
+
+    margin-bottom:8px;
+
+}
+
+.movie-info .date{
+
+    color:#ff3154;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+
+}
+
+.movie-info p{
+
+    color:#aaa;
+
+    margin-bottom:15px;
+
+}
+
+.movie-info .btn{
+
+    width:100%;
+
+}
+
+
+/* =========================
+   BOOKING
+========================= */
+
+.booking{
+
+    background:
+
+    linear-gradient(
+        rgba(5,5,10,.95),
+        rgba(5,5,10,.95)
+    ),
+
+    url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2000&q=80");
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+.booking-box{
+
+    max-width:950px;
+
+    margin:auto;
+
+    padding:35px;
+
+    background:#17171f;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    animation:glow 4s infinite;
+
+}
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#ddd;
+
+}
+
+select,
+input,
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#282832;
+
+    color:white;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:8px;
+
+}
+
+select:focus,
+input:focus,
+textarea:focus{
+
+    border:1px solid #ff3154;
+
+}
+
+
+/* SCREEN */
+
+.screen{
+
+    width:70%;
+
+    margin:40px auto;
+
+    padding:10px;
+
+    background:white;
+
+    color:black;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    border-radius:
+    50% 50% 5px 5px;
+
+    box-shadow:
+    0 10px 30px rgba(255,255,255,.2);
+
+}
+
+
+/* SEATS */
+
+.seats{
+
+    max-width:560px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(8,1fr);
+
+    gap:10px;
+
+}
+
+.seat{
+
+    padding:12px 5px;
+
+    background:#30303b;
+
+    text-align:center;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.seat:hover{
+
+    transform:scale(1.1);
+
+    background:#555;
+
+}
+
+.seat.selected{
+
+    background:#ff3154;
+
+    box-shadow:
+    0 0 12px rgba(255,49,84,.6);
+
+}
+
+.seat.booked{
+
+    background:#666;
+
+    cursor:not-allowed;
+
+    opacity:.5;
+
+}
+
+.total{
+
+    text-align:center;
+
+    font-size:20px;
+
+    margin:30px;
+
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+
+    background:#09090d;
+
+}
+
+.about-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    animation:fadeUp 1s ease;
+
+}
+
+.about-box p{
+
+    color:#bbb;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback{
+
+    background:#111118;
+
+}
+
+.feedback-box{
+
+    max-width:650px;
+
+    margin:auto;
+
+    padding:30px;
+
+    background:#1a1a23;
+
+    border-radius:15px;
+
+}
+
+.feedback-box input{
+
+    margin-bottom:20px;
+
+}
+
+.stars{
+
+    margin-bottom:20px;
+
+}
+
+.star{
+
+    font-size:32px;
+
+    color:#555;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.star:hover{
+
+    transform:scale(1.2);
+
+}
+
+.star.active{
+
+    color:#ffd700;
+
+}
+
+.review{
+
+    max-width:650px;
+
+    margin:20px auto;
+
+    padding:20px;
+
+    background:#20202a;
+
+    border-radius:10px;
+
+    animation:fadeUp .5s ease;
+
+}
+
+
+/* =========================
+   MODALS
+========================= */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    background:rgba(0,0,0,.85);
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.modal-box{
+
+    width:90%;
+
+    max-width:430px;
+
+    background:#191920;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    position:relative;
+
+    animation:fadeUp .4s ease;
+
+    border:1px solid rgba(255,49,84,.3);
+
+}
+
+.modal-box h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.modal-box input{
+
+    margin-bottom:15px;
+
+}
+
+.close{
+
+    position:absolute;
+
+    right:20px;
+
+    top:10px;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#aaa;
+
+}
+
+.close:hover{
+
+    color:#ff3154;
+
+}
+
+.switch{
+
+    text-align:center;
+
+    color:#aaa;
+
+    margin-top:18px;
+
+}
+
+.switch span{
+
+    color:#ff3154;
+
+    cursor:pointer;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    background:#050507;
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#aaa;
+
+}
+
+footer h3{
+
+    color:#ff3154;
+
+    font-size:25px;
+
+    margin-bottom:10px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    nav ul{
+
+        display:none;
+
+    }
+
+    .hero h1{
+
+        font-size:45px;
+
+    }
+
+    .form-row{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .seats{
+
+        grid-template-columns:
+        repeat(4,1fr);
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+<div class="logo">
+🎬 CineBook
+</div>
+
+
+<ul>
+
+<li>
+<a href="#home">Home</a>
+</li>
+
+<li>
+<a href="#movies">Movies</a>
+</li>
+
+<li>
+<a href="#booking">Booking</a>
+</li>
+
+<li>
+<a href="#about">About Us</a>
+</li>
+
+<li>
+<a href="#feedback">Feedback</a>
+</li>
+
+</ul>
+
+
+<div class="nav-buttons">
+
+<button
+class="btn"
+onclick="openLogin()">
+Login
+</button>
+
+<button
+class="btn"
+onclick="openRegister()">
+Register
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section
+class="hero"
+id="home">
+
+<div class="hero-content">
+
+<h1>
+
+Experience
+
+<span>Telugu Cinema</span>
+
+</h1>
+
+
+<p>
+
+Book your favorite Telugu movies,
+select your favorite seats and enjoy
+the magic of cinema with CineBook.
+
+</p>
+
+
+<a href="#movies">
+
+<button class="btn">
+
+Explore Movies 🎬
+
+</button>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MOVIES
+========================= -->
+
+<section
+class="movies"
+id="movies">
+
+
+<div class="title">
+
+<h2>
+
+Latest <span>Telugu Movies</span>
+
+</h2>
+
+<p>
+2026 Telugu cinema releases
+</p>
+
+</div>
+
+
+<div class="movie-grid">
+
+
+<!-- THE PARADISE -->
+
+<div class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=80"
+alt="The Paradise">
+
+</div>
+
+
+<div class="movie-info">
+
+<h3>
+The Paradise
+</h3>
+
+<div class="date">
+📅 24 September 2026
+</div>
+
+<p>
+Nani | Action | Thriller
+</p>
+
+<button
+class="btn"
+onclick="selectMovie('The Paradise')">
+
+Book Now 🎟️
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RANABAALI -->
+
+<div class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=700&q=80"
+alt="Ranabaali">
+
+</div>
+
+
+<div class="movie-info">
+
+<h3>
+Ranabaali
+</h3>
+
+<div class="date">
+📅 16 October 2026
+</div>
+
+<p>
+Vijay Deverakonda | Rashmika
+</p>
+
+<button
+class="btn"
+onclick="selectMovie('Ranabaali')">
+
+Book Now 🎟️
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- AK47 -->
+
+<div class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80"
+alt="Aadarsha Kutumbam">
+
+</div>
+
+
+<div class="movie-info">
+
+<h3>
+Aadarsha Kutumbam House No: 47
+</h3>
+
+<div class="date">
+📅 2 October 2026
+</div>
+
+<p>
+Venkatesh | Family | Action
+</p>
+
+<button
+class="btn"
+onclick="selectMovie('Aadarsha Kutumbam House No: 47')">
+
+Book Now 🎟️
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- MAHENDRAGIRI -->
+
+<div class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=80"
+alt="Mahendragiri Varahi">
+
+</div>
+
+
+<div class="movie-info">
+
+<h3>
+Mahendragiri Varahi
+</h3>
+
+<div class="date">
+📅 11 September 2026
+</div>
+
+<p>
+Telugu | Drama | Action
+</p>
+
+<button
+class="btn"
+onclick="selectMovie('Mahendragiri Varahi')">
+
+Book Now 🎟️
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ROMANCHAKAM -->
+
+<div class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=700&q=80"
+alt="Romanchakam">
+
+</div>
+
+
+<div class="movie-info">
+
+<h3>
+Romanchakam
+</h3>
+
+<div class="date">
+📅 3 September 2026
+</div>
+
+<p>
+Sumanth Prabhas | Romance | Comedy
+</p>
+
+<button
+class="btn"
+onclick="selectMovie('Romanchakam')">
+
+Book Now 🎟️
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- MAREMMA -->
+
+<div class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=80"
+alt="Maremma">
+
+</div>
+
+
+<div class="movie-info">
+
+<h3>
+Maremma
+</h3>
+
+<div class="date">
+📅 10 September 2026
+</div>
+
+<p>
+Telugu | Action | Drama
+</p>
+
+<button
+class="btn"
+onclick="selectMovie('Maremma')">
+
+Book Now 🎟️
+
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     BOOKING
+========================= -->
+
+<section
+class="booking"
+id="booking">
+
+
+<div class="title">
+
+<h2>
+
+Book Your
+<span>Tickets</span>
+
+</h2>
+
+<p>
+Select movie, date, time and seats
+</p>
+
+</div>
+
+
+<div class="booking-box">
+
+
+<div class="form-row">
+
+
+<div>
+
+<label>
+Movie
+</label>
+
+<select id="movie">
+
+<option value="The Paradise">
+The Paradise - ₹250
+</option>
+
+<option value="Ranabaali">
+Ranabaali - ₹250
+</option>
+
+<option value="Aadarsha Kutumbam House No: 47">
+Aadarsha Kutumbam - ₹220
+</option>
+
+<option value="Mahendragiri Varahi">
+Mahendragiri Varahi - ₹200
+</option>
+
+<option value="Romanchakam">
+Romanchakam - ₹180
+</option>
+
+<option value="Maremma">
+Maremma - ₹200
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Date
+</label>
+
+<input
+type="date"
+id="date">
+
+</div>
+
+
+<div>
+
+<label>
+Show Time
+</label>
+
+<select id="time">
+
+<option>
+10:00 AM
+</option>
+
+<option>
+1:30 PM
+</option>
+
+<option>
+4:30 PM
+</option>
+
+<option>
+7:30 PM
+</option>
+
+<option>
+10:00 PM
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<div class="screen">
+SCREEN
+</div>
+
+
+<div
+class="seats"
+id="seats">
+</div>
+
+
+<div class="total">
+
+💺 Seats:
+<b id="selectedSeats">
+0
+</b>
+
+&nbsp;&nbsp;
+
+💰 Total:
+₹<b id="totalPrice">
+0
+</b>
+
+</div>
+
+
+<div style="text-align:center">
+
+<button
+class="btn"
+onclick="bookTickets()">
+
+Confirm Booking 🎟️
+
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT US
+========================= -->
+
+<section
+class="about"
+id="about">
+
+
+<div class="title">
+
+<h2>
+About <span>Us</span>
+</h2>
+
+</div>
+
+
+<div class="about-box">
+
+<p>
+
+🎬 <b>CineBook</b> is an online movie
+ticket booking website created to make
+cinema booking simple and convenient.
+
+</p>
+
+
+<br>
+
+
+<p>
+
+Users can explore Telugu movies,
+check release dates, select show timings,
+choose seats and confirm their movie
+tickets through a simple interface.
+
+</p>
+
+
+<br>
+
+
+<p>
+
+Our project is developed using
+HTML, CSS and JavaScript and demonstrates
+a modern movie booking experience.
+
+</p>
+
+
+<br>
+
+
+<p>
+
+🎬 Movies &nbsp; | &nbsp;
+🎟️ Ticket Booking &nbsp; | &nbsp;
+💺 Seat Selection &nbsp; | &nbsp;
+⭐ Feedback
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FEEDBACK
+========================= -->
+
+<section
+class="feedback"
+id="feedback">
+
+
+<div class="title">
+
+<h2>
+Customer <span>Feedback</span>
+</h2>
+
+<p>
+Tell us about your CineBook experience
+</p>
+
+</div>
+
+
+<div class="feedback-box">
+
+
+<input
+type="text"
+id="feedbackName"
+placeholder="Your Name">
+
+
+<div class="stars">
+
+<span
+class="star"
+onclick="rate(1)">
+★
+</span>
+
+<span
+class="star"
+onclick="rate(2)">
+★
+</span>
+
+<span
+class="star"
+onclick="rate(3)">
+★
+</span>
+
+<span
+class="star"
+onclick="rate(4)">
+★
+</span>
+
+<span
+class="star"
+onclick="rate(5)">
+★
+</span>
+
+</div>
+
+
+<textarea
+id="feedbackText"
+rows="5"
+placeholder="Write your feedback...">
+</textarea>
+
+
+<br><br>
+
+
+<button
+class="btn"
+onclick="submitFeedback()">
+
+Submit Feedback ⭐
+
+</button>
+
+</div>
+
+
+<div id="feedbackList">
+</div>
+
+</section>
+
+
+<!-- =========================
+     LOGIN MODAL
+========================= -->
+
+<div
+class="modal"
+id="loginModal">
+
+
+<div class="modal-box">
+
+
+<span
+class="close"
+onclick="closeModal('loginModal')">
+
+×
+
+</span>
+
+
+<h2>
+🔐 Login
+</h2>
+
+
+<input
+type="email"
+id="loginEmail"
+placeholder="Email">
+
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Password">
+
+
+<button
+class="btn"
+style="width:100%"
+onclick="login()">
+
+Login
+
+</button>
+
+
+<div class="switch">
+
+Don't have an account?
+
+<span onclick="switchRegister()">
+Register
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     REGISTER MODAL
+========================= -->
+
+<div
+class="modal"
+id="registerModal">
+
+
+<div class="modal-box">
+
+
+<span
+class="close"
+onclick="closeModal('registerModal')">
+
+×
+
+</span>
+
+
+<h2>
+📝 Register
+</h2>
+
+
+<input
+type="text"
+id="regName"
+placeholder="Full Name">
+
+
+<input
+type="email"
+id="regEmail"
+placeholder="Email">
+
+
+<input
+type="password"
+id="regPassword"
+placeholder="Password">
+
+
+<button
+class="btn"
+style="width:100%"
+onclick="register()">
+
+Create Account
+
+</button>
+
+
+<div class="switch">
+
+Already have an account?
+
+<span onclick="switchLogin()">
+Login
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h3>
+🎬 CineBook
+</h3>
+
+<p>
+Your Telugu Movie Ticket Booking Partner
+</p>
+
+<br>
+
+<p>
+© 2026 CineBook | All Rights Reserved
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   MOVIE PRICES
+========================= */
+
+const prices = {
+
+"The Paradise":250,
+
+"Ranabaali":250,
+
+"Aadarsha Kutumbam House No: 47":220,
+
+"Mahendragiri Varahi":200,
+
+"Romanchakam":180,
+
+"Maremma":200
+
+};
+
+
+/* =========================
+   SEATS
+========================= */
+
+const seatsContainer =
+document.getElementById("seats");
+
+let selected=[];
+
+
+for(let i=1;i<=40;i++){
+
+    let seat=
+    document.createElement("div");
+
+    seat.className="seat";
+
+    seat.innerText=i;
+
+
+    if(
+        [5,9,14,21,27,35].includes(i)
+    ){
+
+        seat.classList.add("booked");
+
+    }
+
+    else{
+
+        seat.onclick=function(){
+
+            if(
+                seat.classList.contains("selected")
+            ){
+
+                seat.classList.remove("selected");
+
+                selected=
+                selected.filter(
+                    x=>x!==i
+                );
+
+            }
+
+            else{
+
+                seat.classList.add("selected");
+
+                selected.push(i);
+
+            }
+
+            updatePrice();
+
+        };
+
+    }
+
+
+    seatsContainer.appendChild(seat);
+
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+function updatePrice(){
+
+    let movie=
+    document.getElementById("movie").value;
+
+    let price=
+    prices[movie];
+
+
+    document.getElementById(
+        "selectedSeats"
+    ).innerText=
+    selected.length;
+
+
+    document.getElementById(
+        "totalPrice"
+    ).innerText=
+    selected.length*price;
+
+}
+
+
+document.getElementById("movie")
+.addEventListener(
+    "change",
+    updatePrice
+);
+
+
+/* =========================
+   SELECT MOVIE
+========================= */
+
+function selectMovie(movie){
+
+    document.getElementById(
+        "movie"
+    ).value=movie;
+
+
+    updatePrice();
+
+
+    document.getElementById(
+        "booking"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   BOOKING
+========================= */
+
+function bookTickets(){
+
+    let user=
+    localStorage.getItem(
+        "cinebookUser"
+    );
+
+
+    if(!user){
+
+        alert(
+        "🔐 Please Register/Login first!"
+        );
+
+        openLogin();
+
+        return;
+
+    }
+
+
+    if(selected.length===0){
+
+        alert(
+        "❌ Please select at least one seat."
+        );
+
+        return;
+
+    }
+
+
+    let date=
+    document.getElementById(
+        "date"
+    ).value;
+
+
+    if(date===""){
+
+        alert(
+        "❌ Please select a date."
+        );
+
+        return;
+
+    }
+
+
+    let movie=
+    document.getElementById(
+        "movie"
+    ).value;
+
+
+    let time=
+    document.getElementById(
+        "time"
+    ).value;
+
+
+    let total=
+    selected.length*prices[movie];
+
+
+    alert(
+
+`🎉 BOOKING CONFIRMED!
+
+🎬 Movie:
+${movie}
+
+📅 Date:
+${date}
+
+⏰ Show Time:
+${time}
+
+💺 Seats:
+${selected.join(", ")}
+
+💰 Total:
+₹${total}
+
+🍿 Enjoy your movie!`
+
+    );
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function openLogin(){
+
+    document.getElementById(
+        "loginModal"
+    ).style.display="flex";
+
+}
+
+
+function openRegister(){
+
+    document.getElementById(
+        "registerModal"
+    ).style.display="flex";
+
+}
+
+
+function closeModal(id){
+
+    document.getElementById(
+        id
+    ).style.display="none";
+
+}
+
+
+function switchRegister(){
+
+    closeModal("loginModal");
+
+    openRegister();
+
+}
+
+
+function switchLogin(){
+
+    closeModal("registerModal");
+
+    openLogin();
+
+}
+
+
+/* =========================
+   REGISTER
+========================= */
+
+function register(){
+
+    let name=
+    document.getElementById(
+        "regName"
+    ).value.trim();
+
+
+    let email=
+    document.getElementById(
+        "regEmail"
+    ).value.trim();
+
+
+    let password=
+    document.getElementById(
+        "regPassword"
+    ).value;
+
+
+    if(
+        name==="" ||
+        email==="" ||
+        password===""
+    ){
+
+        alert(
+        "❌ Please fill all fields."
+        );
+
+        return;
+
+    }
+
+
+    if(password.length<6){
+
+        alert(
+        "❌ Password must contain at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    let user={
+
+        name:name,
+
+        email:email,
+
+        password:password
+
+    };
+
+
+    localStorage.setItem(
+        "cinebookUser",
+        JSON.stringify(user)
+    );
+
+
+    alert(
+        "✅ Registration Successful!"
+    );
+
+
+    closeModal(
+        "registerModal"
+    );
+
+
+    openLogin();
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(){
+
+    let email=
+    document.getElementById(
+        "loginEmail"
+    ).value.trim();
+
+
+    let password=
+    document.getElementById(
+        "loginPassword"
+    ).value;
+
+
+    let saved=
+    localStorage.getItem(
+        "cinebookUser"
+    );
+
+
+    if(!saved){
+
+        alert(
+        "❌ Account not found. Please register first."
+        );
+
+        return;
+
+    }
+
+
+    let user=
+    JSON.parse(saved);
+
+
+    if(
+        email===user.email &&
+        password===user.password
+    ){
+
+        alert(
+        "🎉 Login Successful!\n\nWelcome "
+        +user.name+
+        "!"
+        );
+
+
+        closeModal(
+            "loginModal"
+        );
+
+    }
+
+    else{
+
+        alert(
+        "❌ Incorrect email or password."
+        );
+
+    }
+
+}
+
+
+/* =========================
+   FEEDBACK
+========================= */
+
+let rating=0;
+
+
+function rate(number){
+
+    rating=number;
+
+
+    let stars=
+    document.querySelectorAll(
+        ".star"
+    );
+
+
+    stars.forEach(
+        (star,index)=>{
+
+            if(index<number){
+
+                star.classList.add(
+                    "active"
+                );
+
+            }
+
+            else{
+
+                star.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+function submitFeedback(){
+
+    let name=
+    document.getElementById(
+        "feedbackName"
+    ).value.trim();
+
+
+    let text=
+    document.getElementById(
+        "feedbackText"
+    ).value.trim();
+
+
+    if(
+        name==="" ||
+        text==="" ||
+        rating===0
+    ){
+
+        alert(
+        "❌ Please enter name, rating and feedback."
+        );
+
+        return;
+
+    }
+
+
+    let review=
+    document.createElement(
+        "div"
+    );
+
+
+    review.className="review";
+
+
+    review.innerHTML=
+
+    "<h3>"+name+"</h3>"+
+
+    "<p style='color:#ffd700;font-size:20px'>"+
+
+    "★".repeat(rating)+
+
+    "</p>"+
+
+    "<p style='color:#bbb;margin-top:10px'>"+
+
+    text+
+
+    "</p>";
+
+
+    document.getElementById(
+        "feedbackList"
+    ).appendChild(review);
+
+
+    document.getElementById(
+        "feedbackName"
+    ).value="";
+
+
+    document.getElementById(
+        "feedbackText"
+    ).value="";
+
+
+    rating=0;
+
+
+    document.querySelectorAll(
+        ".star"
+    ).forEach(
+        star=>
+        star.classList.remove(
+            "active"
+        )
+    );
+
+
+    alert(
+        "⭐ Thank you for your feedback!"
+    );
+
+}
+
+
+/* =========================
+   CLOSE MODAL ON OUTSIDE CLICK
+========================= */
+
+window.onclick=function(event){
+
+    if(
+        event.target.classList.contains(
+            "modal"
+        )
+    ){
+
+        event.target.style.display="none";
+
+    }
+
+};
+
+
+/* INITIAL PRICE */
+
+updatePrice();
+
+</script>
+
+
+</body>
+
+</html>
+```
